@@ -13,13 +13,13 @@ variable "GKE_NUM_NODES" {
   default = 2
   description = "The number of nodes to deploy in the GKE cluster"
 }
-variable "DISK_SIZE" {
-  type    = number
-  default = 10
-  description = "The size of the disk to deploy in the GKE cluster"
-}
-variable "DISK_TYPE" {
-  type    = string
-  default = "pd-standard"
-  description = "The type of the disk to deploy in the GKE cluster"
+
+resource "google_container_cluster" "main" {
+  name     = "main-cluster"
+  location = var.GOOGLE_REGION
+  remove_default_node_pool = true
+  initial_node_count = var.GKE_NUM_NODES
+  node_config {
+    machine_type = "e2-micro"
+  }
 }
