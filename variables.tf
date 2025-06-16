@@ -6,7 +6,6 @@ variable "GOOGLE_REGION" {
 
 variable "GOOGLE_PROJECT" {
   type    = string
-  default = "devops101-prom"
   description = "The project to deploy the GKE cluster"
 }  
 variable "GKE_NUM_NODES" {
