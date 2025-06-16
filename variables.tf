@@ -21,5 +21,7 @@ resource "google_container_cluster" "main" {
   initial_node_count = var.GKE_NUM_NODES
   node_config {
     machine_type = "e2-micro"
+    disk_size_gb = 10
+    disk_type = "pd-standard"
   }
 }
