@@ -1,8 +1,14 @@
 module "gke_cluster" {
   source         = "github.com/DEVOPS101-PROM/tf-google-gke-cluster"
-  google_region  = var.google_region
-  google_project = var.google_project
-  gke_num_nodes  = 2
-  disk_size      = 10
-  disk_type      = "pd-standard"
+  GOOGLE_REGION  = var.GOOGLE_REGION
+  GOOGLE_PROJECT = var.GOOGLE_PROJECT
+  GKE_NUM_NODES  = var.GKE_NUM_NODES
+  resource {
+    name       = "main-node-pool"
+    delete_default_node_pool = true
+    node_count = var.GKE_NUM_NODES
+    node_config {
+      machine_type = "e2-micro"
+    }
+  }
 }
