@@ -1,0 +1,16 @@
+variable "GOOGLE_REGION" {
+  type    = string
+  default = "europe-west1"
+  description = "The region to deploy the GKE cluster"
+}
+
+variable "GOOGLE_PROJECT" {
+  type    = string
+  default = "devops101-prom"
+  description = "The project to deploy the GKE cluster"
+}  
+variable "GKE_NUM_NODES" {
+  type    = number
+  default = 2
+  description = "The number of nodes to deploy in the GKE cluster"
+}
