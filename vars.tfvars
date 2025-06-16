@@ -1,5 +1,5 @@
-GOOGLE_REGION = "europe-west1"
-GOOGLE_PROJECT = "My First Project"
-GKE_NUM_NODES = 2
-DISK_SIZE = 10
-DISK_TYPE = "pd-standard"
+google_region = "europe-west1"
+google_project = "My First Project"
+gke_num_nodes = 2
+disk_size = 10
+disk_type = "pd-standard"
