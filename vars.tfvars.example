@@ -1,0 +1,24 @@
+# Platform Configuration
+platform = "kind"  # Options: "kind" or "gke"
+
+# Google Cloud Configuration (required only for GKE)
+GOOGLE_REGION = "europe-west1"
+GOOGLE_PROJECT = "your-gcp-project-id"
+GKE_NUM_NODES = 2
+
+# Flux Configuration
+enable_local_testing = false
+flux_namespace = "flux-system"
+github_owner = "your-github-username"
+github_repository_name = "flux-gitops"
+
+# GitHub Personal Access Token (set via environment variable or -var flag)
+# github_token = "ghp_your-token-here"
+
+# TF-Controller Configuration
+enable_tf_controller_examples = false  # Set to true to create example TF-Controller resources
+environment = "dev"  # Environment name: dev, staging, prod
+
+# Optional: Override default values
+# flux_version = "v2.0.0"
+# cluster_name = "gke-your-project" 

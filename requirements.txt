@@ -1,0 +1,23 @@
+# Infrastructure as Code Tools
+opentofu>=1.0.0
+terraform>=1.0.0
+
+# Kubernetes Tools
+kubectl>=1.25.0
+kind>=0.20.0
+
+# Cloud Tools
+gcloud>=400.0.0
+docker>=20.10.0
+
+# Development Tools
+make>=4.3
+git>=2.30.0
+
+# Optional: Monitoring Tools
+k9s>=0.27.0
+kubectx>=0.9.0
+kubens>=0.9.0
+
+# Optional: Flux CLI
+flux>=0.31.0 
