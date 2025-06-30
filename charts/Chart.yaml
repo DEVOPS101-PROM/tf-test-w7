@@ -1,0 +1,16 @@
+apiVersion: v2
+name: kbot
+description: A Helm chart for kbot application
+type: application
+version: 0.1.0
+appVersion: "latest"
+keywords:
+  - kbot
+  - web
+  - api
+home: https://github.com/Tirtxika/kbot
+sources:
+  - https://github.com/Tirtxika/kbot
+maintainers:
+  - name: Tirtxika
+    email: Tirtxika@example.com 

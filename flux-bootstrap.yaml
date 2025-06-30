@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: flux-system
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: flux-system
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  ref:
+    branch: main
+  url: https://github.com/Tirtxika/local-cluster-flux-bootstrap
+  secretRef:
+    name: flux-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: flux-system
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: ./clusters/local-cluster
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  targetNamespace: flux-system
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: flux-system
+  namespace: flux-system
+type: Opaque
+data:
+  username: VGlydHhpa2E=
+  password: Z2hwX1l2TmQybGtLT09YOFBsTnNPR21udVFSUVkzQ0MxaDJYZFhqbA==
+---
+# TLS Secret for Flux
+apiVersion: v1
+kind: Secret
+metadata:
+  name: flux-tls-keys
+  namespace: flux-system
+type: Opaque
+data:
+  identity.pem: LS0tLS1CRUdJTiBFQyBQUklWQVRFIEtFWS0tLS0tCk1IY0NBUUVFSU12eDBQVDNrVFN5d0pPWU1ieEs3cTROc1pNSXZoazZneVlwRzFQdzBVQ1RvQW9HQ0NxR1NNNDkKQXdFSG9VUURRZ0FFcHZBUExaQ2lTWGxpaTZRVUNuempwVTdIVzEyenhUOXc1SEUwTjN2S3padHl0dVNESXRLUwplN1oxT0VaaFVISVBNVTRmejcwbk1tY0x3SW5wYUlPeDlRPT0KLS0tLS1FTkQgRUMgUFJJVkFURSBLRVktLS0tLQo=
+  identity.pub: ZWNkc2Etc2hhMi1uaXN0cDI1NiBBQUFBRTJWalpITmhMWE5vWVRJdGJtbHpkSEF5TlRZQUFBQUlibWx6ZEhBeU5UWUFBQUJCQktid0R5MlFva2w1WW91a0ZBcDg0NlZPeDF0ZHM4VS9jT1J4TkRkN3lzMmJjcmJrZ3lMU2tudTJkVGhHWVZCeUR6Rk9IOCs5SnpKbkM4Q0o2V2lEc2ZVPQo= 

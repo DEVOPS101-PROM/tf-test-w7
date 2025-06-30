@@ -1,0 +1,54 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: kbot
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  ref:
+    branch: main
+  url: https://github.com/Tirtxika/kbot
+  secretRef:
+    name: flux-system
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kbot
+  namespace: default
+spec:
+  interval: 5m0s
+  chart:
+    spec:
+      chart: kbot
+      version: 0.1.0
+      sourceRef:
+        kind: GitRepository
+        name: kbot
+        namespace: flux-system
+      interval: 1m0s
+  values:
+    replicaCount: 2
+    image:
+      repository: ghcr.io/kbot
+      tag: latest
+    ingress:
+      enabled: true
+      className: "envoy"
+      hosts:
+        - host: kbot.local
+          paths:
+            - path: /
+              pathType: Prefix
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 250m
+        memory: 256Mi
+    autoscaling:
+      enabled: true
+      minReplicas: 2
+      maxReplicas: 10 

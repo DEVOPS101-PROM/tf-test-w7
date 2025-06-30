@@ -1,0 +1,20 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+Key Principles
+  - write modules
+  - Use function
+  - try testing
+  - Prefer iteration and modularization over code duplication.
+  - Use descriptive variable names with auxiliary verbs (e.g., is_active, has_permission).
+  - Use lowercase with underscores for directories and files (e.g., routers/user_routes.py).
+
+Dependencies
+  - OpenTofu
+  - Flux (use flux operator)
+  - Envoy Gateway
+  - Kind
+  - Kubernets 
+  - GitHub
