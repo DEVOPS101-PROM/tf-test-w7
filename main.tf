@@ -4,6 +4,9 @@ provider "google" {
   region      = "dummy"
 }
 
+provider "github" {
+  token = var.github_token
+}
 
 # Local development cluster for testing
 module "kind" {
@@ -31,6 +34,7 @@ module "github" {
   source = "./modules/github"
   github_repository_name = var.github_repository_name
   github_owner           = var.github_owner
+  github_token           = var.github_token
   description            = "Flux GitOps repository for ${var.GOOGLE_PROJECT}"
   
   depends_on = [module.tls]

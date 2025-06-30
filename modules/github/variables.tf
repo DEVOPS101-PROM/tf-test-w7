@@ -8,6 +8,12 @@ variable "github_owner" {
   type        = string
 }
 
+variable "github_token" {
+  description = "GitHub personal access token for authentication"
+  type        = string
+  sensitive   = true
+}
+
 variable "description" {
   description = "Description of the GitHub repository"
   type        = string
